@@ -1,0 +1,103 @@
+GAS LISTING /tmp/cc2dUfOc.s 			page 1
+
+
+   1               		.file	"main.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.section	.text.startup,"ax",@progbits
+   8               	.global	main
+  10               	main:
+  11               	/* prologue: function */
+  12               	/* frame size = 0 */
+  13               	/* stack size = 0 */
+  14               	.L__stack_usage = 0
+  15 0000 2F9A      		sbi 0x5,7
+  16 0002 509A      		sbi 0xa,0
+  17 0004 519A      		sbi 0xa,1
+  18 0006 529A      		sbi 0xa,2
+  19 0008 539A      		sbi 0xa,3
+  20 000a 549A      		sbi 0xa,4
+  21 000c 559A      		sbi 0xa,5
+  22 000e 569A      		sbi 0xa,6
+  23 0010 C7E0      		ldi r28,lo8(7)
+  24 0012 D0E0      		ldi r29,0
+  25 0014 16E3      		ldi r17,lo8(54)
+  26 0016 02E2      		ldi r16,lo8(34)
+  27 0018 8AE2      		ldi r24,lo8(42)
+  28 001a F82E      		mov r15,r24
+  29 001c 90E4      		ldi r25,lo8(64)
+  30 001e E92E      		mov r14,r25
+  31 0020 2FE3      		ldi r18,lo8(63)
+  32 0022 D22E      		mov r13,r18
+  33 0024 36E7      		ldi r19,lo8(118)
+  34 0026 C32E      		mov r12,r19
+  35               	.L12:
+  36 0028 1F9B      		sbis 0x3,7
+  37 002a 00C0      		rjmp .L12
+  38 002c 0E94 0000 		call rand
+  39 0030 BE01      		movw r22,r28
+  40 0032 0E94 0000 		call __divmodhi4
+  41 0036 8330      		cpi r24,3
+  42 0038 9105      		cpc r25,__zero_reg__
+  43 003a 01F0      		breq .L4
+  44 003c 04F4      		brge .L5
+  45 003e 8130      		cpi r24,1
+  46 0040 9105      		cpc r25,__zero_reg__
+  47 0042 01F0      		breq .L6
+  48 0044 0297      		sbiw r24,2
+  49 0046 01F4      		brne .L3
+  50 0048 CBB8      		out 0xb,r12
+  51 004a 00C0      		rjmp .L3
+  52               	.L5:
+  53 004c 8530      		cpi r24,5
+  54 004e 9105      		cpc r25,__zero_reg__
+  55 0050 01F0      		breq .L8
+  56 0052 04F0      		brlt .L9
+  57 0054 0697      		sbiw r24,6
+  58 0056 01F4      		brne .L3
+GAS LISTING /tmp/cc2dUfOc.s 			page 2
+
+
+  59 0058 EBB8      		out 0xb,r14
+  60 005a 00C0      		rjmp .L3
+  61               	.L6:
+  62 005c DBB8      		out 0xb,r13
+  63 005e 00C0      		rjmp .L3
+  64               	.L4:
+  65 0060 1BB9      		out 0xb,r17
+  66 0062 00C0      		rjmp .L3
+  67               	.L9:
+  68 0064 FBB8      		out 0xb,r15
+  69 0066 00C0      		rjmp .L3
+  70               	.L8:
+  71 0068 0BB9      		out 0xb,r16
+  72               	.L3:
+  73 006a 2FEF      		ldi r18,lo8(1599999)
+  74 006c 89E6      		ldi r24,hi8(1599999)
+  75 006e 98E1      		ldi r25,hlo8(1599999)
+  76 0070 2150      	1:	subi r18,1
+  77 0072 8040      		sbci r24,0
+  78 0074 9040      		sbci r25,0
+  79 0076 01F4      		brne 1b
+  80 0078 00C0      		rjmp .
+  81 007a 0000      		nop
+  82 007c 00C0      		rjmp .L12
+  84               		.ident	"GCC: (AVR_8_bit_GNU_Toolchain_3.6.1_1752) 5.4.0"
+GAS LISTING /tmp/cc2dUfOc.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+     /tmp/cc2dUfOc.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc2dUfOc.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc2dUfOc.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc2dUfOc.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc2dUfOc.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc2dUfOc.s:10     .text.startup:0000000000000000 main
+
+UNDEFINED SYMBOLS
+rand
+__divmodhi4
